@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RequestsComponent } from './requests.component';
 import { RequestComponent } from './request/request.component'; // automatically imports when added to declaration below
+import { RequestsService } from './requests.service';
 
 @NgModule({ // module decorator
   declarations: [ // this is where components are added to the module
@@ -16,7 +17,9 @@ import { RequestComponent } from './request/request.component'; // automatically
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ // register all dependencies for each componenet in this array
+    RequestsService // singleton instance pattern
+  ], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }
