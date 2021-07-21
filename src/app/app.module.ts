@@ -3,12 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RequestsComponent } from './requests.component'; // automatically imports when added to declaration below
+import { RequestsComponent } from './requests.component';
+import { RequestComponent } from './request/request.component'; // automatically imports when added to declaration below
 
 @NgModule({ // module decorator
   declarations: [ // this is where components are added to the module
     AppComponent,
-    RequestsComponent
+    RequestsComponent,
+    RequestComponent
   ],
   imports: [
     BrowserModule,
