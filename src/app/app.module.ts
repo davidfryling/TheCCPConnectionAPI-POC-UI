@@ -4,24 +4,24 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RequestsComponent } from './requests.component';
+//import { RequestsComponent } from './requests.component'; // from tutorial
 import { RequestComponent } from './request/request.component'; // automatically imports when added to declaration below
-import { RequestsService } from './requests.service';
+//import { RequestsService } from './requests.service'; // from tutorial
 import { RequestService } from './request.service';
 
 @NgModule({ // module decorator
   declarations: [ // this is where components are added to the module
     AppComponent,
-    RequestsComponent,
+    //RequestsComponent, // from tutorial
     RequestComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule // to consume API
   ],
   providers: [ // register all dependencies for each componenet in this array
-    RequestsService, // from tutorial -- singleton instance pattern
+    //RequestsService, // from tutorial -- singleton instance pattern
     RequestService
   ], 
   bootstrap: [AppComponent]
