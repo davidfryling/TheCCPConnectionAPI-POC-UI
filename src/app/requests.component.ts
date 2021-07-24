@@ -1,3 +1,6 @@
+// -----------------------------------
+// created during tutorial
+
 import { Component } from "@angular/core"; // import component decorator that allows us to make this class a component
 import { RequestsService } from "./requests.service";
 

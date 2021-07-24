@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { RequestService } from '../request.service';
+import { RequestService } from '../request.service'; // connects us to request service
+import { Observable } from 'rxjs'; // allows us to use observable
+import { Request } from './request'; // model of request object
 
 @Component({
   selector: 'app-request',
@@ -9,11 +11,10 @@ import { RequestService } from '../request.service';
 export class RequestComponent implements OnInit {
 
   title = "Dashboard";
-  requests; // this will hold actual objects that are generated when consuming the .NET Core API with a service
+  requests: Observable<Request[]>;
 
-  constructor(service: RequestService) { // added dependency as a parameter of constructor to decouple component and service
-      //let service = new RequestsService(); // need to add dependency injection here to decouple component and service
-      this.requests = service.getRequests();
+  constructor(service: RequestService) {
+      this.requests = service.getAllRequests();
   }
 
   ngOnInit(): void {
