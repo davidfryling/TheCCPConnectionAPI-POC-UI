@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestService } from '../request.service'; // connects us to request service
-import { Observable } from 'rxjs'; // allows us to use observable
-import { Request } from './request'; // model of request object
+import { Observable, of } from 'rxjs'; // allows us to use observable
+import { Request } from '../model/request'; // model of request object
 
 @Component({
   selector: 'app-request',
@@ -11,10 +11,24 @@ import { Request } from './request'; // model of request object
 export class RequestComponent implements OnInit {
 
   title = "Dashboard";
-  requests: Observable<Request[]>;
+  requests = new Array<Request>(); // observable that holds arrays of request type
 
-  constructor(service: RequestService) {
-      this.requests = service.getAllRequests();
+  constructor(service: RequestService) { // below subscribes to observable and maps request properties to json response
+    service.getAllRequests().subscribe(response =>
+      {
+        this.requests = response.map(request => 
+          {
+            return new Request(
+              request.id,
+              request.timestamp,
+              request.courseName,
+              request.courseCreditHours,
+              request.courseTerm,
+              request.message
+            );
+          })
+      });
+    
   }
 
   ngOnInit(): void {

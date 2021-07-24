@@ -2,40 +2,44 @@
 
 <div>
     <table>
-        <tr>
-            <th>
-                Request ID
-            </th>
-            <th>
-                Timestamp
-            </th>
-            <th>
-                Course Name
-            </th>
-            <th>
-                Credit Hours
-            </th>
-            <th>
-                Term
-            </th>
-        </tr>
-        <tr *ngFor="let request of requests">
-            <td>
-                {{ request.id }}
-            </td>
-            <td>
-                {{ request.timestamp }}
-            </td>
-            <td>
-                {{ request.courseName }}
-            </td>
-            <td>
-                {{ request.courseCreditHours }}
-            </td>
-            <td>
-                {{ request.courseTerm }}
-            </td>
-        </tr>
+        <thead>
+            <tr>
+                <th>
+                    Request ID
+                </th>
+                <th>
+                    Timestamp
+                </th>
+                <th>
+                    Course Name
+                </th>
+                <th>
+                    Credit Hours
+                </th>
+                <th>
+                    Term
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let request of requests">
+                <td>
+                    {{ request.id }}
+                </td>
+                <td>
+                    {{ request.timestamp }}
+                </td>
+                <td>
+                    {{ request.courseName }}
+                </td>
+                <td>
+                    {{ request.courseCreditHours }}
+                </td>
+                <td>
+                    {{ request.courseTerm }}
+                </td>
+            </tr>
+        </tbody>
     </table>
 </div>
 
