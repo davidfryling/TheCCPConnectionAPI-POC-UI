@@ -12,9 +12,43 @@ import { map } from 'rxjs/operators';
 })
 export class RequestService {
   
+  //private request: Request;
+
   constructor(private http: HttpClient) {}
   
   public getAllRequests(): Observable<Request[]> {
-    return this.http.get<Request[]>(requestApiUrl); // <Request[]> converts response of the http request to and an array of requets
+    return this.http.get<Request[]>(requestApiUrl)
+      .pipe(map((data: Request[]) => {
+        return data
+            .map((item: Request) => {
+                return {
+              id: item.id,
+              timestamp: item.timestamp,
+              courseName: item.courseName,
+              courseCreditHours: item.courseCreditHours,
+              courseTerm: item.courseTerm,
+              message: item.message
+            };
+        });
+      }))
+
+  //   .pipe(map(response => {
+        
+  //     const jsonToObject = [];
+
+  //     response.forEach((item) => {
+  //       jsonToObject.push({
+  //         id: item.id,
+  //         timestamp: item.timestamp,
+  //         courseName: item.courseName,
+  //         courseCreditHours: item.courseCreditHours,
+  //         courseTerm: item.courseTerm,
+  //         message: item.message
+  //       });
+  //     });
+
+  //     return jsonToObject;
+  // }));   
   }
+
 }
