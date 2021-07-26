@@ -1,5 +1,5 @@
 export interface Request {
-    id: number;
+    id?: number;
     timestamp: string;
     courseName: string;
     courseCreditHours: number;

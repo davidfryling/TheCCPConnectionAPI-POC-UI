@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 //import { RequestsComponent } from './requests.component'; // from tutorial
 import { RequestComponent } from './request/request.component'; // automatically imports when added to declaration below
 //import { RequestsService } from './requests.service'; // from tutorial
-import { RequestService } from './request.service';
+import { RequestService } from './service/request.service';
 
 @NgModule({ // module decorator
   declarations: [ // this is where components are added to the module

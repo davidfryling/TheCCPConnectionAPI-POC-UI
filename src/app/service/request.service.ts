@@ -2,55 +2,39 @@ import { Injectable } from '@angular/core'; // injectable decoration only necess
 import { HttpClient } from '@angular/common/http'; // import http client to access API services
 import { HttpParams } from '@angular/common/http'; // THIS WILL BE USED TO PASS SPECIFIC PARAMETERS TO SERVICE SO WE ONLY GRAB DATA BASED ON SPECIFIC PARAMETER (e.g., user id for students and parents or school for counselors and advisors)
 import { HttpHeaders } from '@angular/common/http'; // THIS WILL BE USED TO PASS AUTH & TOKEN INFO TO SERVICE WHEN API ENDPOINT IS SECURED IN FINAL APP
-import { requestApiUrl } from '../common/global-contants'; // url stored in separate file as constant
 import { Request } from '../model/request'; // model of request object
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RequestService {
-  
+  private apiUrl = environment.apiUrl;
   //private request: Request;
 
   constructor(private http: HttpClient) {}
   
-  public getAllRequests(): Observable<Request[]> {
-    return this.http.get<Request[]>(requestApiUrl);
-      
-    
-    // .pipe(map((data: Request[]) => {
-      //   return data
-      //       .map((item: Request) => {
-      //           return {
-      //         id: item.id,
-      //         timestamp: item.timestamp,
-      //         courseName: item.courseName,
-      //         courseCreditHours: item.courseCreditHours,
-      //         courseTerm: item.courseTerm,
-      //         message: item.message
-      //       };
-      //   });
-      // }))
-
-  //   .pipe(map(response => {
-        
-  //     const jsonToObject = [];
-
-  //     response.forEach((item) => {
-  //       jsonToObject.push({
-  //         id: item.id,
-  //         timestamp: item.timestamp,
-  //         courseName: item.courseName,
-  //         courseCreditHours: item.courseCreditHours,
-  //         courseTerm: item.courseTerm,
-  //         message: item.message
-  //       });
-  //     });
-
-  //     return jsonToObject;
-  // }));   
+  getAllRequests(): Observable<Request[]> {
+    return this.http.get<Request[]>(`${this.apiUrl}/api/Request`);
   }
+
+  //Example of using the tap rxjs operator, which returns the http response in the exact same form (i.e., json -> json) -- mostly for debugging
+  // getAllRequests(): Observable<Request[]> { // use .pipe method to use any rxjs operator 
+  //   return this.http.get<Request[]>(`${this.apiUrl}/api/Request`)
+  //   .pipe(
+  //     tap(requests => console.log(requests))
+  //   );
+  // }
+
+  // addRequest(request: Request): Observable<Request> {
+  //   return this.http.post<Request>(`${this.apiUrl}/api/Request`, request);
+  // }
+    
+  // future method to get single request
+  //getOneRequest(): Observable<Request> {
+    //return this.http.get<Request>(`${this.apiUrl}/api/Request/${this.request.id}`); // dynamically pass in id to find request
+  //}
 
 }

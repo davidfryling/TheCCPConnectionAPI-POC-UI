@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestService } from '../service/request.service'; // connects us to request service
-import { Observable, of } from 'rxjs'; // allows us to use observable
+import { Observable } from 'rxjs'; // allows us to use observable
 import { Request } from '../model/request'; // model of request object
 import { map } from 'rxjs/operators';
 
@@ -11,59 +11,40 @@ import { map } from 'rxjs/operators';
 })
 export class RequestComponent implements OnInit {
 
-  title = "Dashboard";
-  requests: Observable<Request[]> | undefined; /*= new Observable<Request[]>()*/; // observable that holds arrays of request type
+  title = 'Dashboard';
+  requests: Request[]; // requests array type that http response json will bind to
+  // private request: Request = {
+  //     'timestamp': '2008-10-31T17:10:59',
+  //     'courseName': 'CHEM 1101 Intro to Chemistry 1',
+  //     'courseCreditHours': 5,
+  //     'courseTerm': 'SPR22',
+  //     'message': ''
+  // };
 
-  constructor(private service: RequestService) {}// below subscribes to observable and maps request properties to json response
-
-      //.subscribe((data: Request) => this.request = { ...data });
-    
-    // .subscribe(data => this.request = {
-    //         id: data.id,
-    //         timestamp: data.timestamp,
-    //         courseName: data.courseName,
-    //         courseCreditHours: data.courseCreditHours,
-    //         courseTerm: data.courseTerm,
-    //         message: data.message
-    //   });
-      
-      
-      // response =>
-      // {
-      //   this.requests = response.map(request => 
-      //     {
-      //       return new Request(
-      //         request.id,
-      //         request.timestamp,
-      //         request.courseName,
-      //         request.courseCreditHours,
-      //         request.courseTerm,
-      //         request.message
-      //       );
-      //     })
-      // });
-    
-
-  // ngOnInit() {
-  //   this.requests = this.service.getAllRequests()
-  //   .pipe(map((data: Request[]) => {
-  //         return data
-  //             .map((item: Request) => {
-  //                 return {
-  //               id: item.id,
-  //               timestamp: item.timestamp,
-  //               courseName: item.courseName,
-  //               courseCreditHours: item.courseCreditHours,
-  //               courseTerm: item.courseTerm,
-  //               message: item.message
-  //             };
-  //       });
-  //     }))
-  // }
+  constructor(private requestService: RequestService) {} //inject request service into contstructor
 
   ngOnInit() {
-    this.service.getAllRequests().subscribe((response: Observable<Request[]>)=>{
-      this.requests= response;
-    }) 
+    this.onGetAllRequests();
+    //this.onAddRequest();
+  } 
+
+  onGetAllRequests(): void { // method to encapsulate service method
+    this.requestService.getAllRequests().subscribe(
+      (response) => {
+        console.table(response);
+        this.requests = response; // bind request array type to http response 
+      },
+      (error: any) => console.log(error),
+      () => console.log('Done getting all requests')
+    );
+  }
+
+  // onAddRequest(): void { //
+  //   this.requestService.addRequest(this.request).subscribe(
+  //     (response) => console.log(response),
+  //     (error: any) => console.log(error),
+  //     () => console.log('Done adding request')
+  //   );
+  // }
 
 }
