@@ -1,0 +1,44 @@
+main {
+    display: flex;
+    justify-content: center;
+  }
+  
+  table {
+    max-width: 100%;
+    margin: 50px auto;
+    width: 80%;
+  }
+  
+  th,
+  td {
+    text-align: center;
+    padding: 0.5em 1em;
+  }
+  
+  @media screen and (max-width: 680px) {
+   table {
+     display: block;
+     box-shadow: none;
+   }
+  
+   thead {
+     position: absolute;
+     opacity: 0;
+   }
+    
+   tbody {
+     display: block;
+     min-width: 19em;
+     max-width: 25em;
+   }
+  
+   tr {
+     display: block;
+     margin-bottom: 1em;
+   }
+  
+   td {
+     display: flex;
+     text-align: center;
+   }
+  }

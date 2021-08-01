@@ -8,18 +8,15 @@ import { RequestComponent } from './request/request.component'; // automatically
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { NotIncludedComponent } from './not-included/not-included.component';
-//import { RequestsComponent } from './requests.component'; // from tutorial
 
 import { RequestService } from './service/request.service';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { StudentComponent } from './student/student.component';
 import { FooterComponent } from './footer/footer.component';
-//import { RequestsService } from './requests.service'; // from tutorial
 
 @NgModule({ // module decorator
   declarations: [ // this is where components are added to the module
     AppComponent,
-    //RequestsComponent, // from tutorial
     RequestComponent,
     NavbarComponent,
     HomeComponent,
@@ -34,8 +31,7 @@ import { FooterComponent } from './footer/footer.component';
     HttpClientModule // to consume API
   ],
   providers: [ // register all dependencies for each componenet in this array
-    //RequestsService, // from tutorial -- singleton instance pattern
-    RequestService
+    RequestService // singleton instance pattern
   ], 
   bootstrap: [AppComponent]
 })

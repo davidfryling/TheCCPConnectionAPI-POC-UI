@@ -37,6 +37,10 @@
     font-weight: 600;
   }
 
+  nav span {
+    font-size: large;
+  }
+
   nav img {
     margin: 0 16px;
   }
@@ -67,7 +71,7 @@
   /* Responsive Styles */
   @media screen and (max-width: 767px) {
 
-    .card-container > *:not(.circle-link) ,
+    .card-container ,
     .terminal {
       width: 100%;
     }
