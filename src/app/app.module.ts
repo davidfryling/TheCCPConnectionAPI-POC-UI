@@ -13,6 +13,7 @@ import { NotIncludedComponent } from './not-included/not-included.component';
 import { RequestService } from './service/request.service';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { StudentComponent } from './student/student.component';
+import { FooterComponent } from './footer/footer.component';
 //import { RequestsService } from './requests.service'; // from tutorial
 
 @NgModule({ // module decorator
@@ -24,7 +25,8 @@ import { StudentComponent } from './student/student.component';
     HomeComponent,
     NotIncludedComponent,
     NotFoundComponent,
-    StudentComponent
+    StudentComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
