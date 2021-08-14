@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core'; // import module decorator that makes 
 import { HttpClientModule } from '@angular/common/http'; // import http client module to access API services
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { RequestComponent } from './request/request.component'; // automatically imports when added to declaration below
@@ -28,7 +29,8 @@ import { RequestService } from './service/request.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule // to consume API
+    HttpClientModule, // to consume API
+    FormsModule
   ],
   providers: [ // register all dependencies for each componenet in this array
     RequestService // singleton instance pattern
