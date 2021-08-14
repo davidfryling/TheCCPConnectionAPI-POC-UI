@@ -11,7 +11,7 @@ import { map } from 'rxjs/operators';
 })
 export class RequestComponent implements OnInit {
 
-  title = '';
+  //title = '';
   requests: Request[]; // requests array type that http response json will bind to
   // private request: Request = {
   //     'timestamp': '2008-10-31T17:10:59',

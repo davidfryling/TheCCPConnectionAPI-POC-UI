@@ -8,18 +8,20 @@
   }
 
   footer {
-    width: 425px;
-    text-align: center;
-    margin: 0 auto !important;
+    width: 100%;
     display: flex;
     align-items: center;
-    /* line-height: 20px; */
+    justify-content: center;
+    padding-top: 20px;
+    align-items: center;
+    position: fixed;
     bottom: 0;
+    left: 0;
   }
 
   footer p {
       font-weight: 500;
-      margin-top: 14px;
+      margin-top: 15px;
   }
 
   footer a {

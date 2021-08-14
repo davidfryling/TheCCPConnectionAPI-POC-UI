@@ -8,11 +8,11 @@ import { RequestComponent } from './request/request.component'; // automatically
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { NotIncludedComponent } from './not-included/not-included.component';
-
-import { RequestService } from './service/request.service';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { StudentComponent } from './student/student.component';
 import { FooterComponent } from './footer/footer.component';
+
+import { RequestService } from './service/request.service';
 
 @NgModule({ // module decorator
   declarations: [ // this is where components are added to the module
@@ -23,7 +23,7 @@ import { FooterComponent } from './footer/footer.component';
     NotIncludedComponent,
     NotFoundComponent,
     StudentComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

@@ -14,11 +14,13 @@ const routes: Routes = [
   //{ path: 'request/:param', component: RequestComponent } // how to pass params into path, must come before more general route
   { 
     path: 'student', 
-    component: StudentComponent 
-  },
-  { 
-    path: 'request', 
-    component: RequestComponent 
+    component: StudentComponent,
+    children: [ //how to nest components in routes
+      { 
+        path: 'request', 
+        component: RequestComponent 
+      }
+    ]
   },
   { 
     path: 'not-included', 

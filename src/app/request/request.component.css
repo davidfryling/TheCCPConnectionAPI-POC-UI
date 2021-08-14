@@ -2,6 +2,10 @@ main {
     display: flex;
     justify-content: center;
   }
+
+  .request-body {
+    margin: 10px;
+  }
   
   table {
     max-width: 100%;
@@ -13,12 +17,14 @@ main {
   td {
     text-align: center;
     padding: 0.5em 1em;
+    border: none;
   }
   
   @media screen and (max-width: 680px) {
    table {
      display: block;
      box-shadow: none;
+     margin-bottom: 150px;
    }
   
    thead {
@@ -39,6 +45,7 @@ main {
   
    td {
      display: flex;
-     text-align: center;
+     align-items: center;
+     justify-content: center;
    }
   }
