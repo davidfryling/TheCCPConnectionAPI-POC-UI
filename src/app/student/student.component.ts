@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RequestComponent } from '../request/request.component';
+import { ModalService } from '../modal/modal.service';
 
 @Component({
   selector: 'app-student',
@@ -10,9 +10,13 @@ export class StudentComponent implements OnInit {
 
   title = 'Student Dashboard';
 
-  constructor() { }
+  constructor(private modalService: ModalService) { }
 
   ngOnInit(): void {
+  }
+
+  openModal(id: string) {
+    this.modalService.open(id);
   }
 
 }

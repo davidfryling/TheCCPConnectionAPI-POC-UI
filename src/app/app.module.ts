@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http'; // import http client m
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
+import { ModalModule } from './modal/modal.module';
 
 import { AppComponent } from './app.component';
 import { RequestComponent } from './request/request.component'; // automatically imports when added to declaration below
@@ -24,13 +25,14 @@ import { RequestService } from './service/request.service';
     NotIncludedComponent,
     NotFoundComponent,
     StudentComponent,
-    FooterComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule, // to consume API
-    FormsModule
+    FormsModule,
+    ModalModule
   ],
   providers: [ // register all dependencies for each componenet in this array
     RequestService // singleton instance pattern

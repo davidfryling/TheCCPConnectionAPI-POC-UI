@@ -2,9 +2,9 @@
 
     <h2>{{ title }}</h2>
 
-    <button id="add-request-btn" type="button" class="btn btn-outline-success">&#43;&nbsp;Create New Request</button>
+    <button id="add-request-btn" type="button" class="btn btn-outline-success" (click)="openModal('create-request-modal')">&#43;&nbsp;Create New Request</button>
 
-    <!-- Add modal here that will popup when button above clicked -->
+    <app-modal id="create-request-modal"></app-modal>
 
     <app-request></app-request>
 
