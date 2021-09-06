@@ -3,7 +3,8 @@ import { HttpClientModule } from '@angular/common/http'; // import http client m
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
-import { ModalModule } from './modal/modal.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalModule } from './modal/modal.module';  //REMOVE??
 
 import { AppComponent } from './app.component';
 import { RequestComponent } from './request/request.component'; // automatically imports when added to declaration below
@@ -32,7 +33,8 @@ import { RequestService } from './service/request.service';
     AppRoutingModule,
     HttpClientModule, // to consume API
     FormsModule,
-    ModalModule
+    ModalModule, //REMOVE??
+    NgbModule
   ],
   providers: [ // register all dependencies for each componenet in this array
     RequestService // singleton instance pattern
