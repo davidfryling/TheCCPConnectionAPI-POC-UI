@@ -3,6 +3,8 @@ import { RequestService } from '../services/request.service'; // connects us to 
 import { Observable } from 'rxjs'; // allows us to use observable
 import { Request } from '../models/request'; // model of request object
 import { map } from 'rxjs/operators';
+import { AppError } from '../common/app-error';
+import { NotFoundError } from '../common/not-found-error';
 
 @Component({
   selector: 'app-request',
@@ -29,21 +31,23 @@ export class RequestComponent implements OnInit {
 
   onGetAllRequests(): void { // method to encapsulate service method
     this.requestService.getAllRequests()  
-      .subscribe((response) => {
+      .subscribe(
+        (response) => { // method to handle http response
           console.table(response);
           this.requests = response; // bind request array type to http response 
         },
-        (error: any) => console.log(error),
-        () => console.log('Done getting all requests')
+        (error: AppError) => { // method to handle error response
+          if (error instanceof NotFoundError) // specifically handling a 404 error response
+            alert('The page you are looking for does not exist');
+          else
+            alert('An unexpected error has occurred: ' + error);
+        },
+        () => console.log('Done getting all requests') // method to run after responses are complete??
     );
   }
 
-  // onAddRequest(): void { //
-  //   this.requestService.addRequest(this.request).subscribe(
-  //     (response) => console.log(response),
-  //     (error: any) => console.log(error),
-  //     () => console.log('Done adding request')
-  //   );
+  // onAddRequest(): void {
+
   // }
 
 }
