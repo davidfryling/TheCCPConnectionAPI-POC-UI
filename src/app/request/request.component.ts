@@ -40,7 +40,7 @@ export class RequestComponent implements OnInit {
           if (error instanceof NotFoundError) // specifically handling a 404 error response
             alert('The page you are looking for does not exist');
           else
-            alert('An unexpected error has occurred: ' + error);
+            throw error; // rethrow error so that it can be handled by our global error handler (i.e., app-error-handler)
         },
         () => console.log('Done getting all requests') // method to run after responses are complete??
     );

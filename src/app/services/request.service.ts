@@ -10,7 +10,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import 'rxjs/add/operator/catch'; // deprecated
-import { NotFoundComponent } from '../not-found/not-found.component';
+import 'rxjs/add/operator/throw'; // deprecated
 
 @Injectable({
   providedIn: 'root'
@@ -24,10 +24,10 @@ export class RequestService {
   getAllRequests(): Observable<Request[]> {
     return this.http.get<Request[]>(`${this.apiUrl}/api/Request`)
       .pipe(
-        catchError((error: Response) => {
-          if (error.status === 404) // specifically handling a 404 error response
+        catchError((error: Response) => { // DOES THIS WORK???
+          if (error.status === 404) // handling expected errors 
             return throwError(new NotFoundError());
-          else
+          else // handling unexpected errors
             return throwError(new AppError(error)); // DOES THIS WORK???
         })
       ); 

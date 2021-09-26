@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core'; // import module decorator that makes the class below a module
+import { ErrorHandler, NgModule } from '@angular/core'; // import module decorator that makes the class below a module
 import { HttpClientModule } from '@angular/common/http'; // import http client module to access API services
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,7 +15,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { StudentComponent } from './student/student.component';
 import { FooterComponent } from './footer/footer.component';
 
-import { RequestService } from './service/request.service';
+import { RequestService } from './services/request.service';
+import { AppErrorHandler } from './common/app-error-handler';
 
 @NgModule({ // module decorator
   declarations: [ // this is where components are added to the module
@@ -37,7 +38,8 @@ import { RequestService } from './service/request.service';
     NgbModule
   ],
   providers: [ // register all dependencies for each componenet in this array
-    RequestService // singleton instance pattern
+    RequestService, // singleton instance pattern
+    { provide: ErrorHandler, useClass: AppErrorHandler } // telling angular to use new class instead of default error handler class
   ], 
   bootstrap: [AppComponent]
 })
