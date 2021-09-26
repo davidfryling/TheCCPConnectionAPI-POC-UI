@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core'; // injectable decoration only necess
 import { HttpClient } from '@angular/common/http'; // import http client to access API services
 import { HttpParams } from '@angular/common/http'; // THIS WILL BE USED TO PASS SPECIFIC PARAMETERS TO SERVICE SO WE ONLY GRAB DATA BASED ON SPECIFIC PARAMETER (e.g., user id for students and parents or school for counselors and advisors)
 import { HttpHeaders } from '@angular/common/http'; // THIS WILL BE USED TO PASS AUTH & TOKEN INFO TO SERVICE WHEN API ENDPOINT IS SECURED IN FINAL APP
-import { Request } from '../model/request'; // model of request object
+import { Request } from '../models/request'; // model of request object
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';

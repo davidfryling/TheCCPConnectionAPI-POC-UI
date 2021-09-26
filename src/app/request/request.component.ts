@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { RequestService } from '../service/request.service'; // connects us to request service
+import { RequestService } from '../services/request.service'; // connects us to request service
 import { Observable } from 'rxjs'; // allows us to use observable
-import { Request } from '../model/request'; // model of request object
+import { Request } from '../models/request'; // model of request object
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -25,17 +25,16 @@ export class RequestComponent implements OnInit {
 
   ngOnInit() {
     this.onGetAllRequests();
-    //this.onAddRequest();
   } 
 
   onGetAllRequests(): void { // method to encapsulate service method
-    this.requestService.getAllRequests().subscribe(
-      (response) => {
-        console.table(response);
-        this.requests = response; // bind request array type to http response 
-      },
-      (error: any) => console.log(error),
-      () => console.log('Done getting all requests')
+    this.requestService.getAllRequests()  
+      .subscribe((response) => {
+          console.table(response);
+          this.requests = response; // bind request array type to http response 
+        },
+        (error: any) => console.log(error),
+        () => console.log('Done getting all requests')
     );
   }
 
