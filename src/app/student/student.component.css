@@ -12,13 +12,47 @@
     justify-content: center;
   }
 
+  h2 {
+    margin-top: 30px;
+  }
+
   .student-body {
-      position: relative;
-      top: 60px;
-      text-align: center;
-      margin: 5px;
+    position: relative;
+    top: 60px;
+    text-align: center;
+    margin: 5px;
   }
 
  #add-request-btn {
       margin-top: 30px;
+  }
+
+  /* modal styles -- TODO - encapsulate these into modal css file...*/
+
+  .close {
+    margin-top: -15px;
+  }
+
+  .close-icon {
+    font-size: xx-large;
+    padding: 0px 10px 5px 10px;
+    color: rgb(85, 85, 85);
+  }
+
+  .close-icon:hover {
+    cursor: pointer;
+  }
+
+  .close-icon:active {
+    font-weight: 700;
+    /* background-color: rgba(190, 190, 190, 0.2);
+    border-radius: 5px; */
+  }
+
+  .form-group {
+    margin: 20px;
+  }
+
+  .form-select:hover {
+    cursor: pointer;
   }

@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 import { ModalService } from './modal.service';
 
@@ -9,6 +10,11 @@ import { ModalService } from './modal.service';
   encapsulation: ViewEncapsulation.None //allows this to be accessed globally
 })
 export class ModalComponent implements OnInit {
+  form = new FormGroup({
+    course: new FormControl(),
+    creditHours: new FormControl(),
+    term: new FormControl()
+  });
 
   constructor(private modalService: ModalService) { }
 

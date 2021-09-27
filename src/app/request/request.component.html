@@ -25,13 +25,13 @@
                     {{ request.id }}
                 </td>
                 <td>
-                    {{ request.timestamp }}
+                    {{ request.timestamp | date: 'short' }} <!--date pipe to format datetime as MM/DD/YY, HH:MM PM-->
                 </td>
                 <td>
                     {{ request.courseName }}
                 </td>
                 <td>
-                    {{ request.courseCreditHours }}
+                    {{ request.courseCreditHours | number: '1.2-2' }} <!--number pipe to format decimal places-->
                 </td>
                 <td>
                     {{ request.courseTerm }}

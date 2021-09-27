@@ -2,8 +2,8 @@ import { ErrorHandler, NgModule } from '@angular/core'; // import module decorat
 import { HttpClientModule } from '@angular/common/http'; // import http client module to access API services
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; // bootstrap modal
 import { ModalModule } from './modal/modal.module';  //REMOVE??
 
 import { AppComponent } from './app.component';
@@ -16,6 +16,7 @@ import { StudentComponent } from './student/student.component';
 import { FooterComponent } from './footer/footer.component';
 
 import { RequestService } from './services/request.service';
+
 import { AppErrorHandler } from './common/app-error-handler';
 
 @NgModule({ // module decorator
@@ -34,8 +35,9 @@ import { AppErrorHandler } from './common/app-error-handler';
     AppRoutingModule,
     HttpClientModule, // to consume API
     FormsModule,
+    ReactiveFormsModule,
     ModalModule, //REMOVE??
-    NgbModule
+    NgbModule // bootstrap modal
   ],
   providers: [ // register all dependencies for each componenet in this array
     RequestService, // singleton instance pattern

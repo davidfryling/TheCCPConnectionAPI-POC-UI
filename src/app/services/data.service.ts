@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core'; // injectable decoration only necessary if you have dependencies in constructor
+import { Inject, Injectable } from '@angular/core'; // injectable decoration only necessary if you have dependencies in constructor
 import { HttpClient } from '@angular/common/http'; // import http client to access API services
 import { Request } from '../models/request'; // model of request object
 import { AppError } from '../common/app-error';
@@ -6,13 +6,11 @@ import { NotFoundError } from '../common/not-found-error';
 
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import 'rxjs/add/operator/catch'; // deprecated
-import 'rxjs/add/operator/throw'; // deprecated
+//import 'rxjs/add/operator/catch'; // deprecated
+//import 'rxjs/add/operator/throw'; // deprecated
 
-@Injectable({
-  providedIn: 'root'
-})
-export class DataService {
+//@Injectable() // created compliation error
+export abstract class DataService {
 
   constructor(private apiUrl: string, private http: HttpClient) {}
   
