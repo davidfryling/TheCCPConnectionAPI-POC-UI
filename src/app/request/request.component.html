@@ -17,7 +17,7 @@
             </tr>
         </thead> <!--title="requested created on: {{ request.timestamp | date: 'short' }}"--> 
         <tbody *ngFor="let request of requests">
-            <tr title="requested created on: {{ request.timestamp | date: 'short' }}">
+            <tr title="requested created on {{ request.timestamp | date: 'short' }}">
                 <td> 
                     {{ request.courseName }}
                 </td>
