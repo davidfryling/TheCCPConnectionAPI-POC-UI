@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 export class RequestService extends DataService {
 
   constructor(http: HttpClient) {
-    super(environment.apiUrl, http); // pass url and http to base class (i.e., data service)
+    super(`${environment.baseApiUrl}/api/Request`, http); // pass url and http to base class (i.e., data service)
   }
 
 }

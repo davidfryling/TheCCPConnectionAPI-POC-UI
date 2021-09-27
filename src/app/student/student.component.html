@@ -29,7 +29,7 @@
                 class="form-control">
                 <div *ngIf="course?.touched && course?.invalid">  <!--error messages-->
                   <div *ngIf="course?.errors?.required" class="alert alert-danger">Course information is required</div>
-                  <div *ngIf="course?.errors?.minlength" class="alert alert-danger">Should be minimum {{ course?.errors?.minlength?.requirelength }} characters</div> <!--interpolation not working...-->
+                  <div *ngIf="course?.errors?.minlength" class="alert alert-danger">Should be minimum 7 {{ course?.errors?.minlength?.requirelength }} characters</div> <!--interpolation not working...-->
                 </div>
             </div>
             <div class="form-group">
@@ -56,7 +56,7 @@
                   <option value="AUT22">Autumn 2022</option>
               </select>
               <div *ngIf="term?.touched && term?.invalid">
-                <div *ngIf="course?.errors?.required" class="alert alert-danger">Term is required</div>
+                <div *ngIf="term?.errors?.required" class="alert alert-danger">Term is required</div>
               </div>
             </div>
           </form>

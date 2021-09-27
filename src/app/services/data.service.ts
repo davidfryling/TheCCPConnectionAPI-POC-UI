@@ -12,12 +12,12 @@ import { catchError, map } from 'rxjs/operators';
 //@Injectable() // created compliation error
 export abstract class DataService {
 
-  constructor(private apiUrl: string, private http: HttpClient) {}
+  constructor(private fullApiUrl: string, private http: HttpClient) {}
   
-  // TODO - how to make generic when it returns an obervable with a specific type of request[]????
+  // TODO - how to make generic when it returns an obervable with a specific type of request[]???? Rewatch switchMap operator video in routing unit
   // TODO - add retry to reattempt calls to the server
   getAll(): Observable<Request[]> { 
-    return this.http.get<Request[]>(`${this.apiUrl}/api/Request`)
+    return this.http.get<Request[]>(this.fullApiUrl)
         //.map(response => response) // map operator???
         .pipe(
              catchError(this.handleError)); 
