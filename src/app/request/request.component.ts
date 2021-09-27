@@ -31,11 +31,7 @@ export class RequestComponent implements OnInit {
 
   getAllRequests(): void { // method to encapsulate service method
     this.requestService.getAll()  
-      .subscribe(
-        (response) => { // method to handle http response
-          console.table(response);
-          this.requests = response; // bind request array type to http response 
-        },
+      .subscribe(requests => this.requests = requests, // method to handle http response by bindingrequest array type to http response
         (error: AppError) => { // method to handle error response
           if (error instanceof NotFoundError) // specifically handling a 404 error response
             alert('The page you are looking for does not exist');

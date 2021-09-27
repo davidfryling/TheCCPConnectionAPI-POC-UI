@@ -5,7 +5,7 @@ import { AppError } from '../common/app-error';
 import { NotFoundError } from '../common/not-found-error';
 
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import 'rxjs/add/operator/catch'; // deprecated
 import 'rxjs/add/operator/throw'; // deprecated
 
@@ -16,10 +16,12 @@ export class DataService {
 
   constructor(private apiUrl: string, private http: HttpClient) {}
   
-  getAll(): Observable<Request[]> { // how to make generic when it returns an obervable with a specific type of request[]????
+  // TODO - how to make generic when it returns an obervable with a specific type of request[]????
+  getAll(): Observable<Request[]> { 
     return this.http.get<Request[]>(`${this.apiUrl}/api/Request`)
-      .pipe(
-        catchError(this.handleError)); 
+        //.map(response => response) // map operator???
+        .pipe(
+             catchError(this.handleError)); 
   }
 
   private handleError(error: Response) {
@@ -35,10 +37,14 @@ export class DataService {
   // create(resource): Observable<Request> { // how to make generic when it returns an obervable with a specific type of request????
   //   return this.http.post<Request>(`${this.apiUrl}/api/Request`, request);
   // }
+
+  // update(resource): Observable<Request> { // how to make generic when it returns an obervable with a specific type of request????
+  //   return this.http.put<Request>(`${this.apiUrl}/api/Request/${this.request.id}`); // dynamically pass in id to find request
+  // }
     
   // future method to get single request
-  //getOne(): Observable<Request> { // how to make generic when it returns an obervable with a specific type of request????
-    //return this.http.get<Request>(`${this.apiUrl}/api/Request/${this.request.id}`); // dynamically pass in id to find request
+  // getOne(): Observable<Request> { // how to make generic when it returns an obervable with a specific type of request????
+  //    return this.http.get<Request>(`${this.apiUrl}/api/Request/${this.request.id}`); // dynamically pass in id to find request
   //}
 
 }
