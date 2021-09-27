@@ -26,11 +26,11 @@ export class RequestComponent implements OnInit {
   constructor(private requestService: RequestService) {} //inject request service into contstructor
 
   ngOnInit() {
-    this.onGetAllRequests();
+    this.getAllRequests();
   } 
 
-  onGetAllRequests(): void { // method to encapsulate service method
-    this.requestService.getAllRequests()  
+  getAllRequests(): void { // method to encapsulate service method
+    this.requestService.getAll()  
       .subscribe(
         (response) => { // method to handle http response
           console.table(response);
@@ -46,7 +46,7 @@ export class RequestComponent implements OnInit {
     );
   }
 
-  // onAddRequest(): void {
+  // createRequest(): void {
 
   // }
 
