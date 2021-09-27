@@ -17,6 +17,7 @@ export class DataService {
   constructor(private apiUrl: string, private http: HttpClient) {}
   
   // TODO - how to make generic when it returns an obervable with a specific type of request[]????
+  // TODO - add retry to reattempt calls to the server
   getAll(): Observable<Request[]> { 
     return this.http.get<Request[]>(`${this.apiUrl}/api/Request`)
         //.map(response => response) // map operator???
