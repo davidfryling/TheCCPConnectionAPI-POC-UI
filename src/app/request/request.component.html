@@ -3,13 +3,7 @@
         <thead>
             <tr>
                 <th>
-                    Request ID
-                </th>
-                <th>
-                    Timestamp
-                </th>
-                <th>
-                    Course Name
+                    Course Information
                 </th>
                 <th>
                     Credit Hours
@@ -17,24 +11,24 @@
                 <th>
                     Term
                 </th>
+                <th>
+                    Request Created On
+                </th>
             </tr>
-        </thead>
+        </thead> <!--title="requested created on: {{ request.timestamp | date: 'short' }}"--> 
         <tbody *ngFor="let request of requests">
-            <tr>
-                <td>
-                    {{ request.id }}
-                </td>
-                <td>
-                    {{ request.timestamp | date: 'short' }} <!--date pipe to format datetime as MM/DD/YY, HH:MM PM-->
-                </td>
-                <td>
+            <tr title="requested created on: {{ request.timestamp | date: 'short' }}">
+                <td> 
                     {{ request.courseName }}
                 </td>
                 <td>
                     {{ request.courseCreditHours | number: '1.2-2' }} <!--number pipe to format decimal places-->
                 </td>
-                <td>
+                <td >
                     {{ request.courseTerm }}
+                </td>
+                <td>
+                    {{ request.timestamp | date: 'short' }} <!--date pipe to format datetime as MM/DD/YY, HH:MM PM-->
                 </td>
             </tr>
         </tbody>
