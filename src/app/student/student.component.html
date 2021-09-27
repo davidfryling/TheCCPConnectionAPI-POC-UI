@@ -29,7 +29,7 @@
                 class="form-control">
                 <div *ngIf="course?.touched && course?.invalid">  <!--error messages-->
                   <div *ngIf="course?.errors?.required" class="alert alert-danger">Course information is required</div>
-                  <div *ngIf="course?.errors?.minlength" class="alert alert-danger">Should be minimum {{ course?.errors?.minlength.requirelength }} characters</div>
+                  <div *ngIf="course?.errors?.minlength" class="alert alert-danger">Should be minimum {{ course?.errors?.minlength?.requirelength }} characters</div> <!--interpolation not working...-->
                 </div>
             </div>
             <div class="form-group">
