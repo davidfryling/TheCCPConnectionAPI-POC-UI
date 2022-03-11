@@ -12,23 +12,29 @@
                     Term
                 </th>
                 <th>
-                    Request Created On
+                    Date & Time of Request
+                </th>
+                <th>
+                    Action
                 </th>
             </tr>
-        </thead> <!--title="requested created on: {{ request.timestamp | date: 'short' }}"--> 
+        </thead>
         <tbody *ngFor="let request of requests">
-            <tr title="requested created on {{ request.timestamp | date: 'short' }}">
+            <tr title="requested created at {{ request.timestamp | date: 'shortTime' }} on {{ request.timestamp | date: 'shortDate' }}">
                 <td> 
                     {{ request.courseName }}
                 </td>
                 <td>
-                    {{ request.courseCreditHours | number: '1.2-2' }} <!--number pipe to format decimal places-->
+                    {{ request.courseCreditHours | number: '1.2-2' }}
                 </td>
                 <td >
                     {{ request.courseTerm }}
                 </td>
                 <td>
-                    {{ request.timestamp | date: 'short' }} <!--date pipe to format datetime as MM/DD/YY, HH:MM PM-->
+                    {{ request.timestamp | date: 'short' }}
+                </td>
+                <td>
+                    <button id="delete-request-btn" class="btn btn-sm btn-outline-danger" (click)="deleteRequest(request)">Delete Request</button>
                 </td>
             </tr>
         </tbody>

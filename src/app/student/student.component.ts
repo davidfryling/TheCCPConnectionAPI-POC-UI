@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import { ModalService } from '../modal/modal.service'; //REMOVE??
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { Request } from '../models/request'; // model of request object
+import { RequestService } from '../services/request.service'; // connects us to request service
+import { AppError } from '../common/app-error';
+import { NotFoundError } from '../common/not-found-error';
 
 @Component({
   selector: 'app-student',
@@ -10,6 +13,7 @@ import { ModalService } from '../modal/modal.service'; //REMOVE??
 })
 export class StudentComponent implements OnInit {
 
+  requestAdded: boolean;
   title = 'Student Dashboard';
   closeResult: string;
   form = new FormGroup({
@@ -23,8 +27,19 @@ export class StudentComponent implements OnInit {
     ]),
     term: new FormControl('', Validators.required)
   });
+  creditHourOptions: number[];
+  newRequestInput: Request;
+  newRequestResponse: Request;
+  i: number;
 
-  constructor(private modalService: NgbModal) { }
+  constructor(private modalService: NgbModal, private requestService: RequestService) { 
+    this.creditHourOptions = [];
+    
+    for(this.i = 0; this.i <= 10; this.i += .50)
+    {
+      this.creditHourOptions.push(this.i);
+    }
+  }
 
   ngOnInit(): void {
   }
@@ -41,9 +56,48 @@ export class StudentComponent implements OnInit {
     return this.form.get('term');
   }
 
-  // openModal(id: string) {
-  //   this.modalService.open(id);
-  // }
+  createRequest(): void {
+    this.modalService.dismissAll('Save click');
+
+    this.newRequestInput = {
+      timestamp: new Date(),
+      courseName: this.course?.value,
+      courseCreditHours: Number(this.creditHours?.value),
+      courseTerm: this.term?.value
+    };
+
+    this.requestService.create(this.newRequestInput).subscribe(
+      (response) => {
+        this.newRequestResponse = response;
+      },
+      (error: AppError) => { 
+        if (error instanceof NotFoundError)
+          alert('The page you are looking for does not exist');
+        else
+          throw error; 
+      },
+      () => console.log('New request sent')
+    );
+
+    let courseControl = this.form.controls['course'];
+    let creditHoursControl = this.form.controls['creditHours'];
+    let termControl = this.form.controls['term'];
+
+    courseControl.setValue('');
+    courseControl.markAsPristine();
+    courseControl.markAsUntouched();
+    courseControl.updateValueAndValidity();
+
+    creditHoursControl.setValue('');
+    creditHoursControl.markAsPristine();
+    creditHoursControl.markAsUntouched();
+    creditHoursControl.updateValueAndValidity();
+
+    termControl.setValue('');
+    termControl.markAsPristine();
+    termControl.markAsUntouched();
+    termControl.updateValueAndValidity();
+  }
 
   open(content: any) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {

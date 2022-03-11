@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; // bootstrap modal
-import { ModalModule } from './modal/modal.module';  //REMOVE??
 
 import { AppComponent } from './app.component';
 import { RequestComponent } from './request/request.component'; // automatically imports when added to declaration below
@@ -31,13 +30,12 @@ import { AppErrorHandler } from './common/app-error-handler';
     FooterComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule, // to consume API
-    FormsModule,
-    ReactiveFormsModule,
-    ModalModule, //REMOVE??
-    NgbModule // bootstrap modal
+    BrowserModule, //DOM
+    AppRoutingModule, //Routing
+    HttpClientModule, //Consume APIs
+    FormsModule, //Template-driven forms
+    ReactiveFormsModule, //Reactive forms
+    NgbModule //Bootstrap modal
   ],
   providers: [ // register all dependencies for each componenet in this array
     RequestService, // singleton instance pattern
